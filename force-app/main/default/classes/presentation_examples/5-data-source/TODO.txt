@@ -1,5 +1,8 @@
 Example test:
 
+    Fill in the details of the processing - what does it do?
+    Update the assertion texts
+
     OpportunityProductCanceller
     It uses an OpportunityProductDataSource
 
@@ -17,25 +20,3 @@ Example test:
         The thing on the outside controls what gets processed
         The processor does the processing
         The thing on the outside controls the DML
-
-
-Example test - Case Milestone Closer - A brief aside...
-
-    Not bad - but really useful when you get to something like this.
-
-    A similar pattern, only now it's a Case Milestone closer
-
-    When a Case closes, before the Case Milestones are removed from sight, we want to close them.
-
-    So we write a processor to manage that.
-
-    Only thing is, we can't perform Inserts on Case Milestones, so getting test data into the system is VERY hard.
-
-    So instead, we do the same thing, and create a Mock Datasource
-
-    But then we find that we can't create them in Memory either - most of the fields are non-writable - and actually, that's true of any formula field, rollup summary, or child relationship records.
-
-    So what do we do?
-
-    Now we introduce SObject Fabrication...
-

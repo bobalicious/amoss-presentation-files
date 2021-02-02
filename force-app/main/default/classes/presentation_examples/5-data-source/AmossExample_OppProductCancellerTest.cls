@@ -1,7 +1,7 @@
 @isTest
 public with sharing class AmossExample_OppProductCancellerTest {
 
-    private static DateTime dateOfClosure = DateTime.newInstance( 2021, 01, 02, 15, 00, 0 );
+    private static DateTime dateOfCancellation = DateTime.newInstance( 2021, 01, 02, 15, 00, 0 );
 
     /**
     * @method  process
@@ -26,7 +26,7 @@ public with sharing class AmossExample_OppProductCancellerTest {
         Test.startTest();
 
             OpportunityProductCanceller canceller = new OpportunityProductCanceller()
-                                                            .setDateOfCancellation( dateOfClosure )
+                                                            .setDateOfCancellation( dateOfCancellation )
                                                             .setProductsDataSource( productsDataSource )
                                                             .process();
 
@@ -36,10 +36,11 @@ public with sharing class AmossExample_OppProductCancellerTest {
 
         ProductsDataSourceController.verify();
 
-        System.assertEquals( originalProducts.size(), updatedProducts.size(), 'process, when configured with Products, will set those Products to cancelled' );
+        System.assertEquals( originalProducts.size(), updatedProducts.size(), 'process, when configured with Products, will update all those products' );
 
         for ( OpportunityLineItem thisUpdatedProduct : updatedProducts ) {
-//            System.assertEquals( dateOfClosure, thisUpdatedProduct.CompletionDate, 'process, when configured with Products, will set those Products to cancelled' );
+            System.assertEquals( 'Cancelled'       , thisUpdatedProduct.Fulfilment_Status__c, 'process, when configured with Products, will set those Products to Cancelled' );
+            System.assertEquals( dateOfCancellation, thisUpdatedProduct.Cancelled_On__c     , 'process, when configured with Products, will the cancellation date on the products' );
         }
     }
 }

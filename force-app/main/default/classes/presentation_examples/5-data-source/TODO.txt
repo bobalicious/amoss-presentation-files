@@ -1,8 +1,5 @@
 Example test:
 
-    Fill in the details of the processing - what does it do?
-    Update the assertion texts
-
     OpportunityProductCanceller
     It uses an OpportunityProductDataSource
 

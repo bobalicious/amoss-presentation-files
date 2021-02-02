@@ -11,8 +11,8 @@ public with sharing class UnfulfilledOpportunityProductDataSource implements Opp
         List<OpportunityLineItem> products = new List<OpportunityLineItem>();
         for ( OpportunityLineItem thisOpportunityProduct : [SELECT Id
                                                             FROM   OpportunityLineItem
-                                                            WHERE  OpportunityId     IN :opportunityIds] ) {
-                                                                // TODO: add a where clasue
+                                                            WHERE  OpportunityId     IN :opportunityIds
+                                                            AND    Fulfilment_Status__c != 'Fulfilled' ] ) {
             products.add( thisOpportunityProduct );
         }
         return products;

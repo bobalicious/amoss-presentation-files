@@ -6,7 +6,8 @@ public with sharing class OpportunityProductCanceller {
     public OpportunityProductCanceller process() {
 
         for ( OpportunityLineItem thisProduct : opportunityProductsToUpdate ) {
-//            thisProduct.CompletionDate = dateOfCancellation;
+            thisProduct.Fulfilment_Status__c = 'Cancelled';
+            thisProduct.Cancelled_On__c      = dateOfCancellation;
         }
         return this;
     }

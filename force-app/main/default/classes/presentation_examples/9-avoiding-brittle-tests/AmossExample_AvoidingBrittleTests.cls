@@ -18,12 +18,12 @@ public with sharing class AmossExample_AvoidingBrittleTests {
         Amoss_Instance deliveryProviderController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
         deliveryProviderController
             .expects( 'canDeliver' )
-                .withParameterNamed( 'deliveryPostcode' ).setTo( deliveryPostcode )
+                .withParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .andParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
                 .returning( true )
             .then()
             .expects( 'scheduleDelivery' )
-                .withParameterNamed( 'deliveryPostcode' ).setTo( deliveryPostcode )
+                .withParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .andParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
                 .returns( true );
         AmossExample_DeliveryProvider deliveryProvider = (AmossExample_DeliveryProvider)deliveryProviderController.generateDouble();
@@ -52,7 +52,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
         deliveryProviderController
             .when( 'canDeliver' )
                 .withParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
-                .andParameterNamed( 'deliveryPostcode' ).setTo( deliveryPostcode )
+                .andParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .willReturn( true )
             .also()
             .when( 'canDeliver' ).willReturn( false )
@@ -161,7 +161,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
             .when( 'canDeliver' ).willReturn( true )
             .also()
             .when( 'scheduleDelivery' ).willReturn( true );
-        AmossExample_DeliveryProvider canDeliver = (AmossExample_DeliveryProvider)cannotDeliverController.generateDouble();
+        AmossExample_DeliveryProvider canDeliver = (AmossExample_DeliveryProvider)canDeliverController.generateDouble();
 
         Test.startTest();
 

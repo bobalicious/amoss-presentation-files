@@ -82,7 +82,7 @@ public with sharing class AmossExample_OrderTestWithStub {
 
         Test.stopTest();
 
-        System.assertEquals( true, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery can be scheduled, will return true' );
+        System.assertEquals( false, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery cannot be scheduled, will return false' );
     }
 
 
@@ -172,7 +172,7 @@ public with sharing class AmossExample_OrderTestWithStub {
             .when( 'canDeliver' ).willReturn( true )
             .also()
             .when( 'scheduleDelivery' ).willReturn( true );
-        AmossExample_DeliveryProvider canDeliver = (AmossExample_DeliveryProvider)cannotDeliverController.generateDouble();
+        AmossExample_DeliveryProvider canDeliver = (AmossExample_DeliveryProvider)canDeliverController.generateDouble();
 
         Test.startTest();
 

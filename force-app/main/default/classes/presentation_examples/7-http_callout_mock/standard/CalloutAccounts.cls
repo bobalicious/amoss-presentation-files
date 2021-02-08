@@ -6,8 +6,7 @@ public class CalloutAccounts {
         Http h = new Http();
         HttpResponse res = h.send(req);
         String jsonData = res.getBody();
-        List<Account> accounts =
-            (List<Account>)JSON.deserialize(jsonData, List<Account>.class);
+        List<Account> accounts = (List<Account>)JSON.deserialize(jsonData, List<Account>.class);
         return accounts;
     }
 }

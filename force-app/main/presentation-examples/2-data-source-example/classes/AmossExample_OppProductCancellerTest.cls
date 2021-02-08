@@ -43,7 +43,6 @@ public with sharing class AmossExample_OppProductCancellerTest {
         }
     }
 
-
     /**
     * @method  process
     * @case    when configured with products
@@ -100,5 +99,4 @@ public with sharing class AmossExample_OppProductCancellerTest {
             System.assertEquals( dateOfCancellation, thisUpdatedProduct.Cancelled_On__c     , 'process, when configured with Products, will set the cancellation date on the products that can be cancelled' );
         }
     }
-
 }

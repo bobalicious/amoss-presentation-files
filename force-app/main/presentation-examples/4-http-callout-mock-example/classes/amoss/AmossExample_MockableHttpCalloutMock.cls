@@ -2,4 +2,5 @@ public with sharing class AmossExample_MockableHttpCalloutMock implements HttpCa
     public HttpResponse respond( HttpRequest request ) {
         return null;
     }
+
 }

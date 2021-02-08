@@ -32,8 +32,6 @@ public with sharing class OpportunityProductCanceller {
 
 
 
-
-
     public OpportunityProductCanceller processWithProtection() {
 
         opportunityProductsToUpdate = new List<OpportunityLineItem>();

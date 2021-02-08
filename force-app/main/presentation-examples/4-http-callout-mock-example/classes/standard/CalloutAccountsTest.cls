@@ -1,5 +1,6 @@
 @isTest
-public class CalloutAccountsTest{
+public class CalloutAccountsTest {
+
     @isTest
     public static void testAccountCallout() {
         SingleRequestMock fakeResponse = new SingleRequestMock(200,

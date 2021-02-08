@@ -4,7 +4,6 @@ public with sharing class AmossExample_AvoidingBrittleTests {
     final static String deliveryPostcode = 'AB1 2DE';
     final static Date   deliveryDate     = Date.newInstance( 1987, 04, 10 );
 
-
     @isTest
     public static void inherentlyBrittleTest() {
 

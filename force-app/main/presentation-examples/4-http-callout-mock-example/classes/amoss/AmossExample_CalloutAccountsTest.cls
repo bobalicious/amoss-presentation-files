@@ -27,5 +27,4 @@ public with sharing class AmossExample_CalloutAccountsTest {
 
         System.assertEquals( 'sForceTest1', returnedAccounts[0].Name, 'getAccounts will call the HTTP Service and deserialise the resulting JSON into a List of Accounts' );
     }
-
 }

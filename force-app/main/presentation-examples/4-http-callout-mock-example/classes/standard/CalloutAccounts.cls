@@ -9,5 +9,4 @@ public class CalloutAccounts {
         List<Account> accounts = (List<Account>)JSON.deserialize(jsonData, List<Account>.class);
         return accounts;
     }
-
 }

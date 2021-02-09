@@ -45,6 +45,7 @@ sfab
 amoss_examples
 amoss_main
 amoss_tests
+salesforcecraft-mockhttpserver
 
 #others
 .profile-meta.xml

@@ -45,3 +45,6 @@ sfab
 amoss_examples
 amoss_main
 amoss_tests
+
+#others
+.profile-meta.xml

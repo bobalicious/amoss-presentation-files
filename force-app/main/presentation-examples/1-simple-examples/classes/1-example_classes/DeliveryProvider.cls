@@ -24,8 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public abstract class DeliveryProvider {
+public virtual class DeliveryProvider {
     public class DeliveryProviderException extends Exception {}
-    public abstract Boolean canDeliver( String postcode, Date deliveryDate );
-    public abstract Boolean scheduleDelivery( String postcode, Date deliveryDate );
+    public virtual Boolean canDeliver( String postcode, Date deliveryDate ) {
+        return false;
+    }
+    public virtual Boolean scheduleDelivery( String postcode, Date deliveryDate ) {
+        return false;
+    }
 }

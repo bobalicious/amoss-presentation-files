@@ -19,7 +19,7 @@ public with sharing class AmossExample_OrderTestWithSpy {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 

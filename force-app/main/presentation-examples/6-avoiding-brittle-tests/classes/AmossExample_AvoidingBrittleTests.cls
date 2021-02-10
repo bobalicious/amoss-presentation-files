@@ -29,7 +29,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -53,8 +53,8 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                 .withParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
                 .andParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .willReturn( true )
-            .also()
-            .when( 'canDeliver' ).willReturn( false )
+           .also()
+           .when( 'canDeliver' ).willReturn( false )
             .also()
             .when( 'scheduleDelivery' ).willReturn( true );
 
@@ -62,7 +62,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -91,7 +91,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -119,7 +119,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -164,7 +164,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 

@@ -24,10 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
- // Change name so 'AmossExample disappears?'
-
 @isTest
-public with sharing class AmossExample_Order {
+public with sharing class CustomerOrder {
 
     String postcode;
     Date   deliveryDate;
@@ -68,12 +66,12 @@ public with sharing class AmossExample_Order {
         return false;
     }
 
-    public AmossExample_Order setPostcode( String postcode ) {
+    public CustomerOrder setPostcode( String postcode ) {
         this.postcode = postcode;
         return this;
     }
 
-    public AmossExample_Order setDeliveryDate( Date deliveryDate ) {
+    public CustomerOrder setDeliveryDate( Date deliveryDate ) {
         this.deliveryDate = deliveryDate;
         return this;
     }

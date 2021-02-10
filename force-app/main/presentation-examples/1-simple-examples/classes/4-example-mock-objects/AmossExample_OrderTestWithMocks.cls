@@ -4,9 +4,6 @@ public with sharing class AmossExample_OrderTestWithMocks {
     final static String deliveryPostcode = 'AB1 2DE';
     final static Date   deliveryDate     = Date.newInstance( 1987, 04, 10 );
 
-
-// Add a little text to the slide to say why - order of things...
-
     @isTest
     public static void ifDeliveryCanBeMadeItIsBooked_singleMock() {
 
@@ -22,7 +19,7 @@ public with sharing class AmossExample_OrderTestWithMocks {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -63,7 +60,7 @@ public with sharing class AmossExample_OrderTestWithMocks {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
@@ -103,7 +100,7 @@ public with sharing class AmossExample_OrderTestWithMocks {
 
         Test.startTest();
 
-            AmossExample_Order order = new AmossExample_Order()
+            CustomerOrder order = new CustomerOrder()
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
             Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ cannotDeliver, canDeliver } );

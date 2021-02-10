@@ -33,7 +33,7 @@ SOFTWARE.
  *
  */
 @isTest
-public with sharing class AmossExample_OrderWithInlineConstructed {
+public with sharing class CustomerOrderWithInlineConstructed {
 
     String postcode;
     Date   deliveryDate;
@@ -66,16 +66,15 @@ public with sharing class AmossExample_OrderWithInlineConstructed {
         return false;
     }
 
-    public AmossExample_OrderWithInlineConstructed setPostcode( String postcode ) {
+    public CustomerOrderWithInlineConstructed setPostcode( String postcode ) {
         this.postcode = postcode;
         return this;
     }
 
-    public AmossExample_OrderWithInlineConstructed setDeliveryDate( Date deliveryDate ) {
+    public CustomerOrderWithInlineConstructed setDeliveryDate( Date deliveryDate ) {
         this.deliveryDate = deliveryDate;
         return this;
     }
-
 
     public class DhlDeliveryProvider extends DeliveryProvider {
         public override Boolean canDeliver( String postcode, Date deliveryDate ) {

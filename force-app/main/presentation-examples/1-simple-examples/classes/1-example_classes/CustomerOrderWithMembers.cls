@@ -33,7 +33,7 @@ SOFTWARE.
  *
  */
 @isTest
-public with sharing class AmossExample_OrderWithMembers {
+public with sharing class CustomerOrderWithMembers {
 
     String postcode;
     Date   deliveryDate;
@@ -54,17 +54,17 @@ public with sharing class AmossExample_OrderWithMembers {
         return false;
     }
 
-    public AmossExample_OrderWithMembers addDeliveryProvider( DeliveryProvider deliveryProvider ) {
+    public CustomerOrderWithMembers addDeliveryProvider( DeliveryProvider deliveryProvider ) {
         deliveryProviders.add( deliveryProvider );
         return this;
     }
 
-    public AmossExample_OrderWithMembers setPostcode( String postcode ) {
+    public CustomerOrderWithMembers setPostcode( String postcode ) {
         this.postcode = postcode;
         return this;
     }
 
-    public AmossExample_OrderWithMembers setDeliveryDate( Date deliveryDate ) {
+    public CustomerOrderWithMembers setDeliveryDate( Date deliveryDate ) {
         this.deliveryDate = deliveryDate;
         return this;
     }

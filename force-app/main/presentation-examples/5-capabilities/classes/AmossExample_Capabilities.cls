@@ -4,7 +4,7 @@ public with sharing class AmossExample_Capabilities {
     @isTest
     private static void comparingToObjectsCanCheckValueEqualityOrInstanceEquality() {
 
-        Amoss_Instance controller = new Amoss_Instance( AmossExample_Order.class );
+        Amoss_Instance controller = new Amoss_Instance( CustomerOrder.class );
 
         Contact contactToMatch = new Contact( FirstName = 'example' );
 
@@ -36,7 +36,7 @@ public with sharing class AmossExample_Capabilities {
     @isTest
     private static void comparingToListsCanCheckPropertiesOfTheListElements() {
 
-        Amoss_Instance controller = new Amoss_Instance( AmossExample_Order.class );
+        Amoss_Instance controller = new Amoss_Instance( CustomerOrder.class );
 
         controller
             //
@@ -85,7 +85,7 @@ public with sharing class AmossExample_Capabilities {
     @isTest
     private static void exceptionsCanBeThrown() {
 
-        Amoss_Instance controller = new Amoss_Instance( AmossExample_Order.class );
+        Amoss_Instance controller = new Amoss_Instance( CustomerOrder.class );
 
         controller
         //
@@ -105,7 +105,7 @@ public with sharing class AmossExample_Capabilities {
     @isTest
     private static void canCreateAStubThatWillFailWhateverIsCalledAgainstIt() {
 
-        Amoss_Instance controller = new Amoss_Instance( AmossExample_Order.class );
+        Amoss_Instance controller = new Amoss_Instance( CustomerOrder.class );
         controller.expectsNoCalls();
     }
 }

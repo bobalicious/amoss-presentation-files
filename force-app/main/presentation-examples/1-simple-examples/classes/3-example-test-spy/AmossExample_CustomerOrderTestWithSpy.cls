@@ -1,5 +1,5 @@
 @isTest
-public with sharing class AmossExample_OrderTestWithSpy {
+public with sharing class AmossExample_CustomerOrderTestWithSpy {
 
     final static String deliveryPostcode = 'AB1 2DE';
     final static Date   deliveryDate     = Date.newInstance( 1987, 04, 10 );

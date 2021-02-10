@@ -1,18 +1,17 @@
-# Salesforce DX Project: Next Steps
+# Amoss Example Files
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This repository contains example files, primarily to support presentations on Mocking using Amoss as given at London's Calling in 2021.
 
-## How Do You Plan to Deploy Your Changes?
+Amoss can be found here: https://github.com/bobalicious/amoss
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+None of the code in this repository should be used for any purpose other that the presentation of the capabilities and limitations of Mocking within Unit Tests.
 
-## Configure Your Salesforce DX Project
+You are free to use the files in your presentations, as long as proper credit is given to the author as per the attached licence.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Installation requirements
 
-## Read All About It
+In order for these classes to compile you will need to also install the following:
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+* Amoss: https://github.com/bobalicious/amoss
+* SObjectFabricator: https://github.com/bobalicious/SObjectFabricator
+* Salesforce Craft Mock HTTP Server: https://github.com/nchursin/sfcraft-mock-server

@@ -37,24 +37,24 @@ public with sharing class AmossExample_OrderWithMembers {
 
     String postcode;
     Date   deliveryDate;
-    List<AmossExample_DeliveryProvider> deliveryProviders = new List<AmossExample_DeliveryProvider>();
+    List<DeliveryProvider> deliveryProviders = new List<DeliveryProvider>();
 
     public Boolean scheduleDelivery() {
 
         try {
-            for ( AmossExample_DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
+            for ( DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
                 if ( thisDeliveryProvider.canDeliver( postcode, deliveryDate ) ) {
                     return thisDeliveryProvider.scheduleDelivery( postcode, deliveryDate );
                 }
             }
-        } catch( AmossExample_DeliveryProvider.DeliveryProviderException e ) {
+        } catch( DeliveryProvider.DeliveryProviderException e ) {
             // maybe we would log something here, or similar
         }
 
         return false;
     }
 
-    public AmossExample_OrderWithMembers addDeliverProvider( AmossExample_DeliveryProvider deliveryProvider ) {
+    public AmossExample_OrderWithMembers addDeliveryProvider( DeliveryProvider deliveryProvider ) {
         deliveryProviders.add( deliveryProvider );
         return this;
     }

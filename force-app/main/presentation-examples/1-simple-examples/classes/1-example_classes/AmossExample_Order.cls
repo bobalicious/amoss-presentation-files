@@ -24,14 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/**
- *
- * An Amoss example class.  There is no reason for this to form part of an installation
- * of Amoss beyond the requirement to try out the provided example test class.
- * It is essentially forms part of the documentation, and should not be needed in a production
- * system.
- *
- */
+ // Change name so 'AmossExample disappears?'
+
 @isTest
 public with sharing class AmossExample_Order {
 
@@ -41,7 +35,8 @@ public with sharing class AmossExample_Order {
     //
     // This is the method we want to test
     //
-    public Boolean scheduleDelivery( List<AmossExample_DeliveryProvider> deliveryProviders ) {
+    public Boolean scheduleDelivery( List<DeliveryProvider> deliveryProviders ) {
+
         //
         // It attempts to schedule delivery of this order, using the passed in delivery providers.
         //
@@ -49,7 +44,7 @@ public with sharing class AmossExample_Order {
             //
             // It does so by looping over the delivery providers it has been given
             //
-            for ( AmossExample_DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
+            for ( DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
                 //
                 // It asks each one in turn if it can deliver, based on the postcode and delivery date
                 // of the current order
@@ -62,7 +57,7 @@ public with sharing class AmossExample_Order {
                     return thisDeliveryProvider.scheduleDelivery( postcode, deliveryDate );
                 }
             }
-        } catch( AmossExample_DeliveryProvider.DeliveryProviderException e ) {
+        } catch( DeliveryProvider.DeliveryProviderException e ) {
             //
             // If any of the providers throw an exception at any point
             // then maybe something is logged somewhere... we don't worry about that for this example

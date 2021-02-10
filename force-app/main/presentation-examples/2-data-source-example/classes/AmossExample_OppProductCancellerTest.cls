@@ -33,7 +33,7 @@ public with sharing class AmossExample_OppProductCancellerTest {
 
         Test.stopTest();
 
-        ProductsDataSourceController.verify();
+        productsDataSourceController.verify();
 
         System.assertEquals( originalProducts.size(), updatedProducts.size(), 'process, when configured with Products, will update all those products' );
 

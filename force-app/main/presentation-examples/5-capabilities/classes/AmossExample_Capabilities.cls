@@ -4,10 +4,9 @@ public with sharing class AmossExample_Capabilities {
     @isTest
     private static void comparingToObjectsCanCheckValueEqualityOrInstanceEquality() {
 
-        Contact           contactToMatch    = new Contact( FirstName = 'example' );
-        Map<String,Object> mapOfFieldValues = new Map<String,Object>{ 'FirstName' => 'example' };
-
         Amoss_Instance controller = new Amoss_Instance( AmossExample_Order.class );
+
+        Contact contactToMatch = new Contact( FirstName = 'example' );
 
         controller
             .when( 'exampleMethod' )
@@ -26,12 +25,12 @@ public with sharing class AmossExample_Capabilities {
                 // Useful for checking that SObject fields get set in particular ways.
                 // Available for SObjects
                 //
-                .andParameterNamed( 'matchesIfAllFieldsSetToSameValue' ).withFieldsSetLike( contactToMatch )
+                .andParameterNamed( 'matchesIfAllFieldsSetToSameValue' ).withFieldsSetLike( new Contact( FirstName = 'example' ) )
                 //
                 // Useful for checking that SObject fields get set in particular ways when SObjects are clunky to build.
                 // Available for SObjects
                 //
-                .andParameterNamed( 'matchesIfAllFieldsSetToSameValueAsMap' ).withFieldsSetTo( mapOfFieldValues );
+                .andParameterNamed( 'matchesIfAllFieldsSetToSameValueAsMap' ).withFieldsSetTo( new Map<String,Object>{ 'FirstName' => 'example' } );
     }
 
     @isTest

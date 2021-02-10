@@ -47,19 +47,19 @@ public with sharing class AmossExample_OrderWithInlineConstructed {
         // The fact it is constructed inline, in a method variable, means we can't access it
         // and override it.
         //
-        List<AmossExample_DeliveryProvider> deliveryProviders = new List<AmossExample_DeliveryProvider>{
-            new AmossExample_DeliveryProvider(),
-            new AmossExample_DeliveryProvider(),
-            new AmossExample_DeliveryProvider()
+        List<DeliveryProvider> deliveryProviders = new List<DeliveryProvider>{
+            new DhlDeliveryProvider(),
+            new UpsDeliveryProvider(),
+            new YodelDeliveryProvider()
         };
 
         try {
-            for ( AmossExample_DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
+            for ( DeliveryProvider thisDeliveryProvider : deliveryProviders ) {
                 if ( thisDeliveryProvider.canDeliver( postcode, deliveryDate ) ) {
                     return thisDeliveryProvider.scheduleDelivery( postcode, deliveryDate );
                 }
             }
-        } catch( AmossExample_DeliveryProvider.DeliveryProviderException e ) {
+        } catch( DeliveryProvider.DeliveryProviderException e ) {
             // maybe we would log something here, or similar
         }
 
@@ -74,5 +74,33 @@ public with sharing class AmossExample_OrderWithInlineConstructed {
     public AmossExample_OrderWithInlineConstructed setDeliveryDate( Date deliveryDate ) {
         this.deliveryDate = deliveryDate;
         return this;
+    }
+
+
+    public class DhlDeliveryProvider extends DeliveryProvider {
+        public override Boolean canDeliver( String postcode, Date deliveryDate ) {
+            return true;
+        }
+        public override Boolean scheduleDelivery( String postcode, Date deliveryDate ) {
+            return true;
+        }
+    }
+
+    public class UpsDeliveryProvider extends DeliveryProvider {
+        public override Boolean canDeliver( String postcode, Date deliveryDate ) {
+            return true;
+        }
+        public override Boolean scheduleDelivery( String postcode, Date deliveryDate ) {
+            return true;
+        }
+    }
+
+    public class YodelDeliveryProvider extends DeliveryProvider {
+        public override Boolean canDeliver( String postcode, Date deliveryDate ) {
+            return true;
+        }
+        public override Boolean scheduleDelivery( String postcode, Date deliveryDate ) {
+            return true;
+        }
     }
 }

@@ -14,7 +14,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
         //
         // That's OK, if it's a good trade-off.
         //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
         deliveryProviderController
             .expects( 'canDeliver' )
                 .withParameterNamed( 'postcode' ).setTo( deliveryPostcode )
@@ -25,7 +25,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                 .withParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .andParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
                 .returns( true );
-        AmossExample_DeliveryProvider deliveryProvider = (AmossExample_DeliveryProvider)deliveryProviderController.generateDouble();
+        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
 
         Test.startTest();
 
@@ -33,7 +33,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<AmossExample_DeliveryProvider>{ deliveryProvider } );
+            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
 
         Test.stopTest();
 
@@ -47,7 +47,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         // Configure a Test Stub for a single Delivery Provider
         //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
         deliveryProviderController
             .when( 'canDeliver' )
                 .withParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
@@ -58,7 +58,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
             .also()
             .when( 'scheduleDelivery' ).willReturn( true );
 
-        AmossExample_DeliveryProvider deliveryProvider = (AmossExample_DeliveryProvider)deliveryProviderController.generateDouble();
+        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
 
         Test.startTest();
 
@@ -66,7 +66,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<AmossExample_DeliveryProvider>{ deliveryProvider } );
+            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
 
         Test.stopTest();
 
@@ -83,11 +83,11 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         // Configure a Test Stub for a single Delivery Provider
         //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
         deliveryProviderController
             .when( 'canDeliver' ).willReturn( false );
 
-        AmossExample_DeliveryProvider deliveryProvider = (AmossExample_DeliveryProvider)deliveryProviderController.generateDouble();
+        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
 
         Test.startTest();
 
@@ -95,7 +95,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                                             .setDeliveryDate( deliveryDate )
                                             .setPostcode( deliveryPostcode );
 
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<AmossExample_DeliveryProvider>{ deliveryProvider } );
+            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
 
         Test.stopTest();
 
@@ -111,11 +111,11 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         // Configure a Test Stub for a single Delivery Provider
         //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
         deliveryProviderController
-            .when( 'canDeliver' ).willThrow( new AmossExample_DeliveryProvider.DeliveryProviderException( 'something went wrong working out if we can deliver' ) );
+            .when( 'canDeliver' ).willThrow( new DeliveryProvider.DeliveryProviderException( 'something went wrong working out if we can deliver' ) );
 
-        AmossExample_DeliveryProvider deliveryProvider = (AmossExample_DeliveryProvider)deliveryProviderController.generateDouble();
+        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
 
         Test.startTest();
 
@@ -127,7 +127,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
             Boolean scheduleDeliveryResponse;
 
             try {
-                scheduleDeliveryResponse = order.scheduleDelivery( new List<AmossExample_DeliveryProvider>{ deliveryProvider } );
+                scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
             } catch ( Exception e ) {
                 exceptionThrown = true;
             }
@@ -148,19 +148,19 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         // A Stub Delivery Provider that cannot deliver
         //
-        Amoss_Instance cannotDeliverController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance cannotDeliverController = new Amoss_Instance( DeliveryProvider.class );
         cannotDeliverController
             .when( 'canDeliver' ).willReturn( false );
-        AmossExample_DeliveryProvider cannotDeliver = (AmossExample_DeliveryProvider)cannotDeliverController.generateDouble();
+        DeliveryProvider cannotDeliver = (DeliveryProvider)cannotDeliverController.generateDouble();
 
         // A Stub Delivery Provider that can deliver
         //
-        Amoss_Instance canDeliverController = new Amoss_Instance( AmossExample_DeliveryProvider.class );
+        Amoss_Instance canDeliverController = new Amoss_Instance( DeliveryProvider.class );
         canDeliverController
             .when( 'canDeliver' ).willReturn( true )
             .also()
             .when( 'scheduleDelivery' ).willReturn( true );
-        AmossExample_DeliveryProvider canDeliver = (AmossExample_DeliveryProvider)canDeliverController.generateDouble();
+        DeliveryProvider canDeliver = (DeliveryProvider)canDeliverController.generateDouble();
 
         Test.startTest();
 
@@ -169,7 +169,7 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                                             .setPostcode( deliveryPostcode );
 
             Boolean scheduleDeliveryResponse = order.scheduleDelivery(
-                                                    new List<AmossExample_DeliveryProvider>{
+                                                    new List<DeliveryProvider>{
                                                         cannotDeliver, canDeliver
                                                     }
                                                 );

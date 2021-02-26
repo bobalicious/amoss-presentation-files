@@ -90,7 +90,7 @@ public with sharing class AmossExample_CustomerOrderTestWithStub {
         deliveryProviderController
             .when( 'canDeliver' )
                 .withParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
-                .andParameterNamed( 'deliveryPostcode' ).setTo( deliveryPostcode )
+                .andParameterNamed( 'postcode' ).setTo( deliveryPostcode )
                 .willReturn( true )
             .also()
             .when( 'canDeliver' ).willReturn( false )
@@ -109,7 +109,7 @@ public with sharing class AmossExample_CustomerOrderTestWithStub {
 
         Test.stopTest();
 
-        System.assertEquals( false, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery cannot be scheduled, will return false' );
+        System.assertEquals( true, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery can be scheduled, will return true' );
     }
 
 

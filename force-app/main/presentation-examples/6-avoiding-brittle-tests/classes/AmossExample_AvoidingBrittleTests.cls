@@ -9,10 +9,10 @@ public with sharing class AmossExample_AvoidingBrittleTests {
 
         //
         // If we check everything, then the test becomes brittle.
-        // Any change to class named, method names, parameter names, processing order, will cause this test to pass.
-        // We have swapped out complexity of setup with complexity of maintenance.
+        // Any change to class named, method names, parameter names, processing order, will cause this test to fail.
+        // We have swapped out complexity of setup / dependency with complexity of maintenance.
         //
-        // That's OK, if it's a good trade-off.
+        // That's OK, if it's a good trade-off - but we only want to do it if we get a payback for it.
         //
         Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
         deliveryProviderController
@@ -34,145 +34,6 @@ public with sharing class AmossExample_AvoidingBrittleTests {
                                             .setPostcode( deliveryPostcode );
 
             Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
-
-        Test.stopTest();
-
-        System.assertEquals( true, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery can be scheduled, will return true' );
-    }
-
-
-
-    @isTest
-    public static void ifDeliveryCanBeMadeItIsBooked_singleTestStubWithParameterChecking() {
-
-        // Configure a Test Stub for a single Delivery Provider
-        //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
-        deliveryProviderController
-            .when( 'canDeliver' )
-                .withParameterNamed( 'deliveryDate' ).setTo( deliveryDate )
-                .andParameterNamed( 'postcode' ).setTo( deliveryPostcode )
-                .willReturn( true )
-           .also()
-           .when( 'canDeliver' ).willReturn( false )
-            .also()
-            .when( 'scheduleDelivery' ).willReturn( true );
-
-        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
-
-        Test.startTest();
-
-            CustomerOrder order = new CustomerOrder()
-                                            .setDeliveryDate( deliveryDate )
-                                            .setPostcode( deliveryPostcode );
-
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
-
-        Test.stopTest();
-
-        System.assertEquals( true, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery can be scheduled, will return true' );
-    }
-
-
-
-
-
-
-    @isTest
-    public static void ifDeliveryCannotBeMadeItIsNotBooked_singleTestStub() {
-
-        // Configure a Test Stub for a single Delivery Provider
-        //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
-        deliveryProviderController
-            .when( 'canDeliver' ).willReturn( false );
-
-        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
-
-        Test.startTest();
-
-            CustomerOrder order = new CustomerOrder()
-                                            .setDeliveryDate( deliveryDate )
-                                            .setPostcode( deliveryPostcode );
-
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
-
-        Test.stopTest();
-
-        System.assertEquals( false, scheduleDeliveryResponse, 'scheduleDelivery, when the delivery cannot be scheduled, will return false' );
-    }
-
-
-
-
-
-    @isTest
-    public static void ifProviderThrowsAnException_singleTestStub() {
-
-        // Configure a Test Stub for a single Delivery Provider
-        //
-        Amoss_Instance deliveryProviderController = new Amoss_Instance( DeliveryProvider.class );
-        deliveryProviderController
-            .when( 'canDeliver' ).willThrow( new DeliveryProvider.DeliveryProviderException( 'something went wrong working out if we can deliver' ) );
-
-        DeliveryProvider deliveryProvider = (DeliveryProvider)deliveryProviderController.generateDouble();
-
-        Test.startTest();
-
-            CustomerOrder order = new CustomerOrder()
-                                            .setDeliveryDate( deliveryDate )
-                                            .setPostcode( deliveryPostcode );
-
-            Boolean exceptionThrown = false;
-            Boolean scheduleDeliveryResponse;
-
-            try {
-                scheduleDeliveryResponse = order.scheduleDelivery( new List<DeliveryProvider>{ deliveryProvider } );
-            } catch ( Exception e ) {
-                exceptionThrown = true;
-            }
-
-        Test.stopTest();
-
-        System.assertEquals( false, exceptionThrown         , 'scheduleDelivery, when a delivery provider throws an exception, stops it from propogating' );
-        System.assertEquals( false, scheduleDeliveryResponse, 'scheduleDelivery, when a delivery provider throws an exception, will return false' );
-    }
-
-
-
-
-
-
-    @isTest
-    public static void ifDeliveryCanBeMadeItIsBooked_multipleTestStubs() {
-
-        // A Stub Delivery Provider that cannot deliver
-        //
-        Amoss_Instance cannotDeliverController = new Amoss_Instance( DeliveryProvider.class );
-        cannotDeliverController
-            .when( 'canDeliver' ).willReturn( false );
-        DeliveryProvider cannotDeliver = (DeliveryProvider)cannotDeliverController.generateDouble();
-
-        // A Stub Delivery Provider that can deliver
-        //
-        Amoss_Instance canDeliverController = new Amoss_Instance( DeliveryProvider.class );
-        canDeliverController
-            .when( 'canDeliver' ).willReturn( true )
-            .also()
-            .when( 'scheduleDelivery' ).willReturn( true );
-        DeliveryProvider canDeliver = (DeliveryProvider)canDeliverController.generateDouble();
-
-        Test.startTest();
-
-            CustomerOrder order = new CustomerOrder()
-                                            .setDeliveryDate( deliveryDate )
-                                            .setPostcode( deliveryPostcode );
-
-            Boolean scheduleDeliveryResponse = order.scheduleDelivery(
-                                                    new List<DeliveryProvider>{
-                                                        cannotDeliver, canDeliver
-                                                    }
-                                                );
 
         Test.stopTest();
 
